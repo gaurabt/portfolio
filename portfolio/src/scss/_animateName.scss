@@ -1,0 +1,51 @@
+@mixin animateName() {
+  color: white;
+  
+  .first-name > span:nth-child(1) {
+    transform: translate(-60%, 12%) rotate(-30deg);
+  }
+  
+  .first-name > span:nth-child(2) {
+    transform: translate(-40%, -15%) rotate(-15deg);
+  }
+  
+  .first-name > span:nth-child(3) {
+    transform: translate(-20%, 0) rotate(10deg);
+  }
+  
+  .first-name > span:nth-child(4) {
+    transform: translate(8%, -10%) rotate(-10deg);
+  }
+  
+  .first-name > span:nth-child(5) {
+    transform: translate(40%, -10%) rotate(-9deg);
+  }
+  
+  .first-name > span:nth-child(6) {
+    transform: translate(60%, 8%) rotate(36deg);
+  }
+  
+  .second-name > span:nth-child(1) {
+    transform: translate(-70%, 11%) rotate(-10deg);
+  }
+  
+  .second-name > span:nth-child(2) {
+    transform: translate(-40%, 9%) rotate(-7deg);
+  }
+  
+  .second-name > span:nth-child(3) {
+    transform: translate(-12%, -15%) rotate(1deg);
+  }
+  
+  .second-name > span:nth-child(4) {
+    transform: translate(14%, 10%) rotate(10deg);
+  }
+  
+  .second-name > span:nth-child(5) {
+    transform: translate(30%, -19%) rotate(15deg);
+  }
+  
+  .second-name > span:nth-child(6) {
+    transform: translate(55%, 8%) rotate(36deg);
+  }
+}

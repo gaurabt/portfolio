@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400;600;800&display=swap');
+@import 'animateName';
+
+//font-weights
+$font-200: font-weight(200);
+$font-400: font-weight(400);
+$font-600: font-weight(600);
+$font-800: font-weight(800);
+
+//colors
+$primary-blue: rgb(144, 224, 239);
+$primary-purple: rgb(157, 78, 221);
+
+body{
+  margin: 0;
+  padding-inline: calc(10vw + 15px);
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  background-color: rgba(black,1);
+  color: $primary-blue;
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .arrow{
+    position: relative;
+    margin-top: auto;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, transparent 40%, rgba(white,0.4));
+    background-clip : text;
+    -webkit-text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: blink 1s linear  infinite alternate;
+  }
+}
+
+@keyframes blink {
+  0%{
+    background-position: 0% 50%;
+  }
+  100%{
+    background-position: 100% 50%;
+  }
+}
+
+.wrapper {
+  display: grid;
+  place-items: center;
+  margin-top: 7rem;
+}
+
+.name{
+  .first-name,.second-name{
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 7rem;
+    font-weight: bolder;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 3px;
+  }
+  
+  .first-name > span, .second-name> span {
+    display: inline-block;
+    transition: all ease-in 250ms;  
+  }
+}
+
+.name:hover{ 
+ @include animateName();
+}
+
+
+h4{
+  color: white;
+  text-align: center;
+  display: block;
+  font-weight: lighter;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.nav{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  li{
+    list-style-type: none;
+    a{
+      text-decoration: none;
+      color: $primary-blue;
+      font-size: 1.08rem;
+      transition: all ease 200ms;
+      &:hover{
+        color: $primary-purple;
+      }
+    }
+  }
+}
+
+@media screen and (min-width:1280px){
+  .nav{
+    width: 80vw;
+    margin-inline: auto;
+  }
+}
+
+//About Page
+.about{
+  h2{
+    font-size: min(2.5rem, 8vw);
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+    &::before{
+      content: '';
+      width: min(40%, 100px);
+      background-color: white;
+      height: 4px;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      animation: slide 1000ms linear;
+    }
+  }
+
+  h3{
+    margin-top: 8rem;
+    font-size: 2rem;
+    font-weight: lighter;
+  }
+
+  .card{
+    box-sizing: border-box;
+    width: 180px;
+    padding: 2rem;
+    border: 0.5px solid white;
+    border-radius: 0.7rem;
+    img{
+      max-width: 100%;
+    }
+  }
+}
+
+@keyframes slide {
+  from{
+    width: 0;
+  }
+  to{
+    width: min(40%, 100px);
+  }
+}
+

@@ -53,7 +53,7 @@ const Header = () => {
               <span>g</span>
             </div>
           </div>
-          <h4>&#60;Frontend Developer /&#62;</h4>
+          <h3>&#60;Frontend Developer /&#62;</h3>
         </secton>
         {show && <Arrow />}
     </header>

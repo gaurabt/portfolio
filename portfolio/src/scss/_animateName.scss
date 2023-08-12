@@ -1,5 +1,5 @@
 @mixin animateName() {
-  color: white;
+  color: $primary-purple;
   
   .first-name > span:nth-child(1) {
     transform: translate(-60%, 12%) rotate(-30deg);

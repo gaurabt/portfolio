@@ -20,6 +20,8 @@ const Header = () => {
     })
   },[])
 
+  //hover effect on name
+
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
   let interval = null

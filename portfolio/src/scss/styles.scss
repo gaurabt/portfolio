@@ -35,7 +35,7 @@ header{
     width: 100%;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     background: linear-gradient(to right, transparent 40%, rgba(white,0.4));
     background-clip : text;
     -webkit-text-fill-color: transparent;
@@ -128,17 +128,17 @@ h3{
 
   //container for skills section
   .card-container{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px, 1fr));
+    grid-template-rows: 250px;
     width: 100%;
     gap: 2rem;
     .card{
-      flex-basis: 1;
       display: flex;
       align-items: center;
       box-sizing: border-box;
       width: 220px;
-      aspect-ratio: 1;
+      min-height: 250px;
       padding: 2.5rem;
       border-radius: 0.7rem;
       @include glassmorphism();
@@ -233,6 +233,13 @@ h3{
     align-items: stretch;
     border-radius: 8px;
     row-gap: 1rem;
+    cursor: pointer;
+    &:hover{
+      h4{
+        color: white;
+        transition: color 300ms ease-in;
+      }
+    }
     .project-image{
       min-width: 150px;
       padding: 1rem;
@@ -254,6 +261,7 @@ h3{
     @include glassmorphism();
     width: 60%;
     padding: 1.5rem 2rem;
+    margin-bottom: 3.5rem;
     .education-item{
       cursor: pointer;
       display: flex;
@@ -305,6 +313,19 @@ h3{
       }
     }
   }
+}
+
+footer{
+  position: fixed;
+  color: black;
+  text-align: center;
+  padding: 0.5rem 0;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  background-color: white;
+  opacity: 0.5;
 }
 
 @media screen and (max-width:992px) {

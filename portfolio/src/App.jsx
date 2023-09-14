@@ -10,6 +10,7 @@ function App() {
       <main>
         <About />
       </main>
+      <footer>There are still a lot of things that are left to do. Stay tuned for the complete portfolio!</footer>
     </>
   )
 }

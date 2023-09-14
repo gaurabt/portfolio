@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState,useEffect } from 'react'
 
 const Header = () => {
   const [show, setShow] = useState(true)
+
+  const firstNameRef = useRef(null)
+  const lastNameRef = useRef(null)
 
   useEffect(()=> {
     const handleScroll = () => {
@@ -17,6 +20,59 @@ const Header = () => {
     })
   },[])
 
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+  let interval = null
+
+  const handlehover = (e) =>{
+      let iteration = 0
+      
+      //clear previous interval
+      clearInterval(interval)
+      interval = setInterval(()=>{
+        e.target.innerText = e.target.innerText.split('').map((letter,index) => {
+          if(index<iteration){
+            return e.target.dataset.value[index]
+          } 
+          return letters[Math.floor(Math.random()*26)]
+        }).join('')
+
+        if(iteration >= e.target.dataset.value.length){
+          clearInterval(interval)
+        }
+
+        iteration += 1/3
+      },30)
+  }
+
+  useEffect(()=>{
+    const firstName = firstNameRef.current
+
+    if(firstName){
+      firstName.addEventListener('mouseover',handlehover)
+    }
+
+    return () => {
+      if(firstName){
+        firstName.removeEventListener('mouseover', handlehover)
+      }
+    }
+  },[])
+
+  useEffect(()=>{
+    const lastName = lastNameRef.current
+
+    if(lastName){
+      lastName.addEventListener('mouseover',handlehover)
+    }
+
+    return () => {
+      if(lastName){
+        lastName.removeEventListener('mouseover', handlehover)
+      }
+    }
+  },[])
+
   const Arrow = () => {
     return(
       <div className="arrow">
@@ -29,32 +85,23 @@ const Header = () => {
   return (
     <header>
         <ul className='nav'>
-          <li><a href="">Home</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">Projects</a></li>
-          <li><a href="">Contact</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-        <secton className="wrapper">
+        <section className="wrapper">
           <div className="name">
-            <div className="first-name">
-              <span>G</span>
-              <span>a</span>
-              <span>u</span>
-              <span>r</span>
-              <span>a</span>
-              <span>v</span>
-            </div>
-            <div className="second-name">
-              <span>T</span>
-              <span>a</span>
-              <span>m</span>
-              <span>a</span>
-              <span>n</span>
-              <span>g</span>
-            </div>
+            <h1 
+              data-value='Gaurav' 
+              ref={firstNameRef}>Gaurav</h1>
+            <h1 
+              data-value='Tamang'
+              ref={lastNameRef}
+            >Tamang</h1>
           </div>
           <h3>&#60;Frontend Developer /&#62;</h3>
-        </secton>
+        </section>
         {show && <Arrow />}
     </header>
   )

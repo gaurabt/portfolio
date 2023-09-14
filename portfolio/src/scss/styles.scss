@@ -11,12 +11,16 @@ $font-800: font-weight(800);
 $primary-blue: rgb(144, 224, 239);
 $primary-purple: rgb(157, 78, 221);
 
+html{
+  scroll-behavior: smooth;
+}
+
 body{
   margin: 0;
   padding-inline: calc(10vw + 15px);
   box-sizing: border-box;
   font-family: 'Noto Sans', sans-serif;
-  background-color: rgba(black,1);
+  background-color: rgba(black,0.9);
   color: $primary-blue;
 }
 
@@ -53,29 +57,14 @@ header{
   display: grid;
   place-items: center;
   margin-top: 7rem;
-}
-
-.name{
-  .first-name,.second-name{
-    cursor: default;
-    text-transform: uppercase;
+  h1{
     font-size: 7rem;
-    font-weight: bolder;
-    text-align: center;
-    margin: 0;
-    letter-spacing: 3px;
-  }
-  
-  .first-name > span, .second-name> span {
-    display: inline-block;
-    transition: all ease-in 250ms;  
+    line-height: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    cursor: pointer;
   }
 }
-
-.name:hover{ 
- @include animateName();
-}
-
 
 h3{
   color: white;
@@ -152,34 +141,91 @@ h3{
       aspect-ratio: 1;
       padding: 2.5rem;
       border-radius: 0.7rem;
-      background-image: linear-gradient(to bottom right, transparent 40%, rgba(#e3d2c1,0.2));
-      box-shadow: 0px 0px 8px rgba(white,0.2);
+      @include glassmorphism();
       img{
         max-width: 100%;
       }
   }
   }
 
+  @media screen and (max-width: 800px) {
+    .card-container{
+      columns: 2;
+      gap: 2rem;
+
+    }
+  }
+
   //container for experience container
-    .experience-container, .project-container{
+  .experience-container:hover > .experience-item::after {
+    opacity: 1;
+  }  
+  
+  .experience-container, .project-container{
       width: 80%;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1rem;
       .experience-item{
         @include glassmorphism();
+        background-color: rgba(#F0F8FF,0.2);
         display: flex;
         align-items: stretch;
+        position: relative;
+        cursor: pointer;
+        padding: 2rem 0;
         .experience-date{
           text-align: center;
           min-width: 200px;
           padding-inline: 1rem;
         }
         .experience-type{
-          padding-left: 2rem;
+          padding-inline: 2rem;
           flex-grow: 1;
         }
-      }
+        .extra-div{
+          background-color: rgba(black,0.8);
+          position: absolute;
+          inset: 2px;
+          border-radius: inherit;
+          z-index: 2;
+          padding: 20px;
+        }
+        &:hover::before{
+          opacity: 1;
+        }
+        &:hover h4, &:hover p{
+          color: white;
+          transition: color 300ms ease-in;
+        }
+        &::before,&:after{
+          border-radius: inherit;
+          content: '';
+          height: 100%;
+          width: 100%;
+          left: 0px;
+          top: 0px;
+          opacity: 0;
+          position: absolute;
+          transition: opacity 500ms;
+        }
+        &::before {
+          background: radial-gradient(
+            800px circle at var(--mouse-x) var(--mouse-y), 
+            rgba(#8A2BE2,0.15),
+            transparent 40%
+          );
+          z-index: 3;
+        }
+        .card::after {  
+          background: radial-gradient(
+            600px circle at var(--mouse-x) var(--mouse-y), 
+            rgba(#8A2BE2,0.15),
+            transparent 40%
+          );
+          z-index: 1;
+        }
+    }
     }
 
   .project-item{
@@ -209,6 +255,7 @@ h3{
     width: 60%;
     padding: 1.5rem 2rem;
     .education-item{
+      cursor: pointer;
       display: flex;
       align-items: stretch;
       gap: 2rem;

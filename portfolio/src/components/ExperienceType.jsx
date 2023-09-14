@@ -2,7 +2,7 @@ import React from 'react'
 
 const ExperienceType = (props) => {
   return (
-    <article className="experience-type">
+    <article className="experience-type" style={props.style}>
       <h4>{props.position}</h4>
       <p style={{fontSize:'0.89rem'}}>{props.description}</p>
     </article>

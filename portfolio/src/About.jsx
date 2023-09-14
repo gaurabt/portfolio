@@ -6,7 +6,7 @@ import Education from './components/Education'
 
 const About = () => {
   return (
-    <section className="about">
+    <section className="about" id='about'>
       <h2>About Me</h2>
       <p style={{
                 borderLeft: '2px solid white', 

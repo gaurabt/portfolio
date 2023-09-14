@@ -13,7 +13,7 @@ const Projects = () => {
     return array;
   }
   return (
-    <section className='projects'>
+    <section className='projects' id='projects'>
       <h3>Projects</h3>
       <div className="project-container">
         <div className="project-item">
